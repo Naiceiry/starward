@@ -2,22 +2,21 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
-import { People } from "./people";
 
-export const Listpeople = () => {
+export const Listspecies = () => {
 	const { store, actions } = useContext(Context);
 	useEffect(() => {
-		actions.setCharacters();
+		actions.setSpecies();
 	}, []);
-	const listCharacters = store.characters.map((item, index) => {
-		return <People key={index} name={item.name} />;
+	const listSpecies = store.species.map((items, indexs) => {
+		return <li key={indexs}>{items.name}</li>;
 	});
 	return (
 		<div className="text-center mt-5">
 			<ul>
 				<li>
-					<h1>people</h1>
-					{listCharacters}
+					<h1>SPECIES</h1>
+					{listSpecies}
 				</li>
 			</ul>
 		</div>

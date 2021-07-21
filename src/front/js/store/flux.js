@@ -1,7 +1,9 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			planets: [],
 			characters: [],
+			species: [],
 			message: null,
 			demo: [
 				{
@@ -48,6 +50,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(resp => resp.json())
 					.then(data => {
 						setStore({ characters: data.results });
+					});
+			},
+			setPlanets: () => {
+				fetch("https://www.swapi.tech/api/planets")
+					.then(resp => resp.json())
+					.then(data => {
+						setStore({ planets: data.results });
+					});
+			},
+			setSpecies: () => {
+				fetch("https://www.swapi.tech/api/species")
+					.then(resp => resp.json())
+					.then(data => {
+						setStore({ species: data.results });
 					});
 			}
 		}
