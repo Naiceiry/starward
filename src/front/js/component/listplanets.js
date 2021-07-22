@@ -9,7 +9,7 @@ export const Listplanets = () => {
 		actions.setPlanets();
 	}, []);
 	const listPlanets = store.planets.map((itemp, indexp) => {
-		return <li key={indexp}>{itemp.name}</li>;
+		return <Planets key={indexp} name={itemp.name} url={itemp.url} />;
 	});
 	return (
 		<div className="text-center mt-5">

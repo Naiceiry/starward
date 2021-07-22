@@ -1,17 +1,20 @@
 import React, { useContext } from "react";
-export const Planets = () => {
+import PropTypes from "prop-types";
+export const Planets = props => {
 	return (
 		<div className="card" style={{ width: "18rem" }}>
 			<img src="..." classnName="card-img-top" alt="..." />
 			<div className="card-body">
-				<h5 className="card-title">PLANETS</h5>
-				<p className="card-text">
-					Some quick example text to build on the card title and make up the bulk of the cards content.
-				</p>
+				<h5 className="card-title">{props.name}</h5>
+				<p className="card-text">{props.url}</p>
 				<a href="#" className="btn btn-primary">
 					Go somewhere
 				</a>
 			</div>
 		</div>
 	);
+};
+Planets.propTypes = {
+	name: PropTypes.string,
+	url: PropTypes.string
 };

@@ -10,7 +10,7 @@ export const Listpeople = () => {
 		actions.setCharacters();
 	}, []);
 	const listCharacters = store.characters.map((item, index) => {
-		return <People key={index} name={item.name} />;
+		return <People key={index} name={item.name} url={item.url} />;
 	});
 	return (
 		<div className="text-center mt-5">
