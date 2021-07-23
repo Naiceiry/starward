@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
 import { People } from "./people";
 
@@ -10,12 +9,22 @@ export const Listpeople = () => {
 		actions.setCharacters();
 	}, []);
 	const listCharacters = store.characters.map((item, index) => {
-		return <People key={index} name={item.name} url={item.url} />;
+		return (
+			<People
+				key={index}
+				name={item.name}
+				url={item.url}
+				properties={item.properties}
+				description={item.description}
+			/>
+		);
 	});
 	return (
-		<div className="todo">
-			<h1>people</h1>
-			{listCharacters}
+		<div className="text-center mt-5">
+			<h1>PEOPLE</h1>
+			<div className="todo">
+				<div className="list"> {listCharacters}</div>
+			</div>
 		</div>
 	);
 };

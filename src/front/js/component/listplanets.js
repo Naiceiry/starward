@@ -13,12 +13,10 @@ export const Listplanets = () => {
 	});
 	return (
 		<div className="text-center mt-5">
-			<ul>
-				<li>
-					<h1>PLANETS</h1>
-					{listPlanets}
-				</li>
-			</ul>
+			<div className="text-center mt-5">
+				<h1>PLANETS</h1>
+				<div id="todo">{listPlanets}</div>
+			</div>
 		</div>
 	);
 };

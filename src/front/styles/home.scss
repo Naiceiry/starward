@@ -1,11 +1,43 @@
-#startw{
+/*#startw{
     width: 20%;
     height: 20%;
 }
 .card{
     padding: auto;
     display: inline-block;
+    .scroll{
+    overflow-x: scroll;
+    overflow-y: hidden;
+    align-items: center;
 }
+}*/
 .todo{
-    overflow: scroll;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    width: 100%;
+}
+.list{
+    display: flex;
+}
+.botones{
+    width: 100% ;
+    display: flex;
+    flex-direction: row
+}
+h1{
+    color: deeppink;
+    align-content: flex-start;
+}
+.card{
+    width:18rem
+}
+.botones{
+    display: block;
+}
+.bl{
+    float: left;
+}
+.br{
+    float: right;
 }

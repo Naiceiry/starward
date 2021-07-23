@@ -12,12 +12,8 @@ export const Listspecies = () => {
 	});
 	return (
 		<div className="text-center mt-5">
-			<ul>
-				<li>
-					<h1>SPECIES</h1>
-					{listSpecies}
-				</li>
-			</ul>
+			<h1>SPECIES</h1>
+			<div id="todo">{listSpecies}</div>
 		</div>
 	);
 };
