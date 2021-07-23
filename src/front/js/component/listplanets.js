@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
-
+import { Planets } from "./planets";
 export const Listplanets = () => {
 	const { store, actions } = useContext(Context);
 	useEffect(() => {

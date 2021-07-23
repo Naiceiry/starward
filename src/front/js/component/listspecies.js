@@ -1,15 +1,14 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.scss";
-
+import { Species } from "./species";
 export const Listspecies = () => {
 	const { store, actions } = useContext(Context);
 	useEffect(() => {
 		actions.setSpecies();
 	}, []);
 	const listSpecies = store.species.map((items, indexs) => {
-		return <li key={indexs}>{items.name}</li>;
+		return <Species key={indexs} name={items.name} url={items.url} />;
 	});
 	return (
 		<div className="text-center mt-5">
