@@ -8,12 +8,22 @@ export const Listspecies = () => {
 		actions.setSpecies();
 	}, []);
 	const listSpecies = store.species.map((items, indexs) => {
-		return <Species key={indexs} name={items.name} url={items.url} />;
+		return (
+			<Species
+				key={indexs}
+				name={items.name}
+				url={items.url}
+				properties={items.properties}
+				description={items.description}
+			/>
+		);
 	});
 	return (
 		<div className="text-center mt-5">
 			<h1>SPECIES</h1>
-			<div id="todo">{listSpecies}</div>
+			<div className="todo">
+				<div className="list">{listSpecies}</div>
+			</div>
 		</div>
 	);
 };

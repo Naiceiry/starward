@@ -1,9 +1,11 @@
+import PropTypes, { object } from "prop-types";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			planets: [],
 			characters: [],
 			species: [],
+			details: [],
 			message: null,
 			demo: [
 				{
@@ -50,6 +52,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(resp => resp.json())
 					.then(data => {
 						setStore({ characters: data.results });
+					});
+			},
+			setDetalles: url => {
+				const store = getStore();
+				fetch(url)
+					.then(resp => resp.json())
+					.then(data => {
+						let arrdetalles = data.results;
+						let Details = object.entries(arrdetalles.properties);
+						setStore({ properties: Details });
 					});
 			},
 			setPlanets: () => {
