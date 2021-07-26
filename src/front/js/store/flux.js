@@ -48,20 +48,48 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ demo: demo });
 			},
 			setCharacters: () => {
+				const store = getStore();
 				fetch("https://www.swapi.tech/api/people")
-					.then(resp => resp.json())
+					.then(resp => {
+						return resp.json();
+					})
 					.then(data => {
-						setStore({ characters: data.results });
+						let arrLike = data.results.map(item => {
+							return { ...item, like: false, type: "people" };
+						});
+						setStore({ characters: data.results, arrLike: arrLike });
 					});
 			},
+			/*	likesClick: (id, bool, type) => {
+				const store = getStore();
+				if (type == "people") {
+					const heart = store.people.map((elem, i) => {
+						if (i === id) elm.like = bool;
+						return elm;
+					});
+					setStore({ people: heart });
+				} else if (type == "planets") {
+					const heart = store.planets.map((elem, i) => {
+						if (i === id) elm.like = bool;
+						return elm;
+					});
+					setStore({ planets: heart });
+				} else if (type == "species") {
+					const heart = store.species.map((elem, i) => {
+						if (i === id) elm.like = bool;
+						return elm;
+					});
+					setStore({ species: heart });
+				}
+			},*/
 			setDetalles: url => {
 				const store = getStore();
 				fetch(url)
 					.then(resp => resp.json())
 					.then(data => {
 						let arrdetalles = data.results;
-						let Details = object.entries(arrdetalles.properties);
-						setStore({ properties: Details });
+						let details = object.entries(arrdetalles.properties);
+						setStore({ properties: details });
 					});
 			},
 			setPlanets: () => {

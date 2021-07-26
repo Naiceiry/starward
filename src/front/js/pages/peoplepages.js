@@ -1,9 +1,16 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Context } from "../store/appContext";
 import perfil from "../../img/perfil.jpg";
 import PropTypes from "prop-types";
-import { People } from "../component/people";
 import "../../styles/home.scss";
 export const Peoplepages = props => {
+	const { store, actions } = useContext(Context);
+	useEffect(() => {
+		actions.setDetalles();
+	}, []);
+	const listproperties = store.properties.map((item, index) => {
+		return <Peoplepages key={index} properties={item.properties} description={item.description} />;
+	});
 	return (
 		<div className="grand mb-3">
 			<div className="row no-gutters">
@@ -13,8 +20,8 @@ export const Peoplepages = props => {
 				<div className="col-md-8">
 					<div className="card-body">
 						<h5 className="card-title">{props.name}</h5>
-						<p className="card-text">{props.properties}</p>
-						<p className="card-text">{actions.details[url]}</p>
+						<p className="card-text">{props.url}</p>
+						<p>{listproperties}</p>
 					</div>
 				</div>
 			</div>
@@ -24,6 +31,6 @@ export const Peoplepages = props => {
 Peoplepages.propTypes = {
 	name: PropTypes.string,
 	url: PropTypes.string,
-	properties: PropTypes.object,
-	description: PropTypes.string
+	description: PropTypes.string,
+	properties: PropTypes.object
 };
