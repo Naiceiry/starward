@@ -5,7 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			planets: [],
 			characters: [],
 			species: [],
-			details: [],
+			properties: [],
 			message: null,
 			demo: [
 				{
@@ -87,8 +87,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(url)
 					.then(resp => resp.json())
 					.then(data => {
-						let arrdetalles = data.results;
-						let details = object.entries(arrdetalles.properties);
+						console.log(data);
+						let arrdetalles = data.result;
+						console.log(arrdetalles);
+						let details = Object.entries(arrdetalles.properties);
 						setStore({ properties: details });
 					});
 			},

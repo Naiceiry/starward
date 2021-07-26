@@ -5,11 +5,17 @@ import PropTypes from "prop-types";
 import "../../styles/home.scss";
 export const Peoplepages = props => {
 	const { store, actions } = useContext(Context);
-	useEffect(() => {
-		actions.setDetalles();
-	}, []);
+
+	console.log(store.properties);
 	const listproperties = store.properties.map((item, index) => {
-		return <Peoplepages key={index} properties={item.properties} description={item.description} />;
+		return (
+			<div key={index}>
+				<p>
+					{item[0]}
+					{item[1]}
+				</p>
+			</div>
+		);
 	});
 	return (
 		<div className="grand mb-3">
@@ -32,5 +38,5 @@ Peoplepages.propTypes = {
 	name: PropTypes.string,
 	url: PropTypes.string,
 	description: PropTypes.string,
-	properties: PropTypes.object
+	properties: PropTypes.array
 };

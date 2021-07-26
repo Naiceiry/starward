@@ -24,7 +24,11 @@ export const People = props => {
 				</a>
 				<div className="botones">
 					<Link className="bl" to="/detalles">
-						<span className="btn btn-primary btn-lg" href="#" role="button">
+						<span
+							className="btn btn-primary btn-lg"
+							href="#"
+							role="button"
+							onClick={() => actions.setDetalles(props.url)}>
 							Learn More!
 						</span>
 					</Link>

@@ -5,7 +5,7 @@ import { Link, useParams } from "react-router-dom";
 export const Species = props => {
 	return (
 		<div className="card">
-			<img src={perfil} classnName="card-img-top" alt="..." />
+			<img src={perfil} className="card-img-top" alt="..." />
 			<div className="card-body">
 				<h5 className="card-title">{props.name}</h5>
 				<a href={props.url} className="card-text">
