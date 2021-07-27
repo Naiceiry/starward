@@ -6,7 +6,6 @@ import "../../styles/home.scss";
 export const Peoplepages = props => {
 	const { store, actions } = useContext(Context);
 
-	console.log(store.properties);
 	const listproperties = store.properties.map((item, index) => {
 		return (
 			<div key={index}>
@@ -25,9 +24,9 @@ export const Peoplepages = props => {
 				</div>
 				<div className="col-md-8">
 					<div className="card-body">
-						<h5 className="card-title">{props.name}</h5>
-						<p className="card-text">{props.url}</p>
-						<p>{listproperties}</p>
+						<h1 className="card-title">{listproperties[9]}</h1>
+						<h1 className="card-text">{listproperties[10]}</h1>
+						<h3>{listproperties}</h3>
 					</div>
 				</div>
 			</div>
