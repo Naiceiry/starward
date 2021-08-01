@@ -6,6 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			characters: [],
 			species: [],
 			properties: [],
+			favourites: [],
 			message: null,
 			demo: [
 				{
@@ -60,28 +61,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ characters: data.results, arrLike: arrLike });
 					});
 			},
-			/*	likesClick: (id, bool, type) => {
-				const store = getStore();
-				if (type == "people") {
-					const heart = store.people.map((elem, i) => {
-						if (i === id) elm.like = bool;
-						return elm;
-					});
-					setStore({ people: heart });
-				} else if (type == "planets") {
-					const heart = store.planets.map((elem, i) => {
-						if (i === id) elm.like = bool;
-						return elm;
-					});
-					setStore({ planets: heart });
-				} else if (type == "species") {
-					const heart = store.species.map((elem, i) => {
-						if (i === id) elm.like = bool;
-						return elm;
-					});
-					setStore({ species: heart });
-				}
-			},*/
+			addFavourite: (dataArr, itemUrl, favouritesArr) => {
+				dataArr.map(item => {
+					if (favouritesArr && item.url === itemUrl) {
+						if (favouritesArr.length === 0) {
+							item.favorite = true;
+							setStore({ favourites: [...favouritesArr, item] });
+						} else {
+							//NO REPETIR ELEMENTO EN FAVORITOS
+							if (!favouritesArr.some(item => item.url === itemUrl)) {
+								item.favorite = true;
+								setStore({ favourites: [...favouritesArr, item] });
+							}
+						}
+					}
+				});
+			},
 			setDetalles: url => {
 				const store = getStore();
 				fetch(url)
