@@ -61,21 +61,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ characters: data.results, arrLike: arrLike });
 					});
 			},
-			addFavourite: (dataArr, itemUrl, favouritesArr) => {
-				dataArr.map(item => {
-					if (favouritesArr && item.url === itemUrl) {
-						if (favouritesArr.length === 0) {
-							item.favorite = true;
-							setStore({ favourites: [...favouritesArr, item] });
-						} else {
-							//NO REPETIR ELEMENTO EN FAVORITOS
-							if (!favouritesArr.some(item => item.url === itemUrl)) {
-								item.favorite = true;
-								setStore({ favourites: [...favouritesArr, item] });
-							}
-						}
-					}
-				});
+			addFavourite: dataNewElement => {
+				const store = getStore();
+				let newFavourites = [...store.favourites, dataNewElement];
+				setStore({ favourites: newFavourites });
 			},
 			setDetalles: url => {
 				const store = getStore();

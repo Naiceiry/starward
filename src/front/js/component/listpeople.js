@@ -4,12 +4,15 @@ import "../../styles/home.scss";
 import { People } from "./people";
 export const Listpeople = () => {
 	const { store, actions } = useContext(Context);
+
 	useEffect(() => {
 		actions.setCharacters();
 	}, []);
+
 	const listCharacters = store.characters.map((item, index) => {
-		return <People key={index} name={item.name} url={item.url} />;
+		return <People key={index} name={item.name} url={item.url} uid={item.uid} kind={"person"} />;
 	});
+
 	return (
 		<div className="text-center mt-5">
 			<h1>PEOPLE</h1>

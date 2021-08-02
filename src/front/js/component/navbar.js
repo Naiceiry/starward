@@ -7,9 +7,19 @@ import { Context } from "../store/appContext";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
-	let urlArr;
-	let category;
-	let element;
+
+	const listFavourites = store.favourites.map(item => {
+		let urlArr = item.url.split("/");
+		let element = item.uid;
+		let category = urlArr[urlArr.length - 2];
+
+		return (
+			<li key={item.url} id="myLiList">
+				<Link to={`/${category}/${element}`}>{item.name}</Link>
+			</li>
+		);
+	});
+
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between" id="myNav">
 			<div className="collapse navbar-collapse" id="navbarTogglerDemo01">
@@ -28,21 +38,8 @@ export const Navbar = () => {
 					</button>
 					<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
 						<ul>
-							{store.favourites && store.favourites.length > 0 ? (
-								store.favourites.map(item => {
-									urlArr = item.url.split("/");
-									category = urlArr[urlArr.length - 2];
-									element = urlArr[urlArr.length - 1];
-									return (
-										<li key={item.url} id="myLiList">
-											<Link to={`/${category}/${element}`}>{item.name}</Link>
-											<i
-												className="far fa-trash-alt"
-												onClick={() => actions.deleteFavourite(item.url, store.favourites)}
-											/>
-										</li>
-									);
-								})
+							{store.favourites.length > 0 ? (
+								listFavourites
 							) : (
 								<p className="pl-3">You do not have any favourite</p>
 							)}

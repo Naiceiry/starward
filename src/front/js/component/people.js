@@ -2,16 +2,14 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import perfil from "../../img/perfil.jpg";
 import PropTypes from "prop-types";
-import { Peoplepages } from "../pages/peoplepages";
 import { Link, useParams } from "react-router-dom";
+import { Heart, HeartFill } from "react-bootstrap-icons";
+
 export const People = props => {
 	const { store, actions } = useContext(Context);
-	useEffect(() => {
-		actions.setCharacters();
-	}, []);
-	store.characters.map((itemp, indexp) => {
-		return <Peoplepages key={indexp} name={itemp.name} url={itemp.url} />;
-	});
+
+	const isIncluded = store.favourites.find(item => item.uid === props.uid && item.kind === props.kind);
+
 	return (
 		<div className="card">
 			<img src={perfil} className="card-img-top" alt="..." />
@@ -32,13 +30,27 @@ export const People = props => {
 							Learn More!
 						</span>
 					</Link>
-					<i className="bi bi-heart"></i>
+					{isIncluded && <HeartFill />}
+					{!isIncluded && (
+						<Heart
+							onClick={e => {
+								actions.addFavourite({
+									name: props.name,
+									uid: props.uid,
+									kind: props.kind,
+									url: props.url
+								});
+							}}
+						/>
+					)}
 				</div>
 			</div>
 		</div>
 	);
 };
 People.propTypes = {
+	uid: PropTypes.string,
 	name: PropTypes.string,
-	url: PropTypes.string
+	url: PropTypes.string,
+	kind: PropTypes.string
 };
