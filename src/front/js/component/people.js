@@ -32,11 +32,7 @@ export const People = props => {
 							Learn More!
 						</span>
 					</Link>
-					<Link className="br" to="/">
-						<span className="btn btn-primary btn-lg" href="#" role="button">
-							IL
-						</span>
-					</Link>
+					<i className="bi bi-heart"></i>
 				</div>
 			</div>
 		</div>

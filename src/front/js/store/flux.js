@@ -82,12 +82,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(url)
 					.then(resp => resp.json())
 					.then(data => {
-						console.log(data);
 						let arrdetalles = data.result;
-						console.log(arrdetalles);
 						let details = Object.entries(arrdetalles.properties);
 						setStore({ properties: details });
 					});
+			},
+			deleteFavourite: (itemUrl, favouritesArr) => {
+				favouritesArr.map((item, index) => {
+					if (item.url === itemUrl) {
+						item.favorite = false;
+						favouritesArr.splice(index, 1);
+						setStore({ favourites: [...favouritesArr] });
+					}
+				});
 			},
 			setPlanets: () => {
 				fetch("https://www.swapi.tech/api/planets")
