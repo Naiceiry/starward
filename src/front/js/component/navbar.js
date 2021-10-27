@@ -22,13 +22,15 @@ export const Navbar = () => {
 
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between" id="myNav">
-			<div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-				<Link to="/">
-					<img id="logo" src={logo} />
-				</Link>
-				<div className="dropdown myDropdown">
+			<div className="row collapse navbar-collapse">
+				<div className="col-6">
+					<Link to="/">
+						<img id="logo" src={logo} />
+					</Link>
+				</div>
+				<div className="col-6 float-right">
 					<button
-						className="btn btn-outline-warning dropdown-toggle pl-5 pr-5"
+						className="btn btn-outline-warning dropdown-toggle pl-5 pr-5 float-right"
 						type="button"
 						id="dropdownMenuButton"
 						data-toggle="dropdown"
@@ -36,12 +38,12 @@ export const Navbar = () => {
 						aria-expanded="false">
 						favourite
 					</button>
-					<div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-						<ul>
+					<div className="dropdown-menu  pr-12" aria-labelledby="dropdownMenuButton">
+						<ul className="float-md-right  pr-12">
 							{store.favourites.length > 0 ? (
 								listFavourites
 							) : (
-								<p className="pl-3">You do not have any favourite</p>
+								<p className=" pl-10 pr-11">You do not have any favourite</p>
 							)}
 						</ul>
 					</div>
