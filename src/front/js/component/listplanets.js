@@ -7,16 +7,8 @@ export const Listplanets = () => {
 	useEffect(() => {
 		actions.setPlanets();
 	}, []);
-	const listPlanets = store.planets.map((itemp, indexp) => {
-		return (
-			<Planets
-				key={indexp}
-				name={itemp.name}
-				url={itemp.url}
-				properties={itemp.properties}
-				description={itemp.description}
-			/>
-		);
+	const listPlanets = store.planets.map((item, index) => {
+		return <Planets key={index} name={item.name} url={item.url} uid={item.uid} kind={"planets"} />;
 	});
 	return (
 		<div className="text-center mt-5">

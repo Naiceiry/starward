@@ -85,18 +85,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				});
 			},
+
 			setPlanets: () => {
+				const store = getStore();
 				fetch("https://www.swapi.tech/api/planets")
 					.then(resp => resp.json())
 					.then(data => {
-						setStore({ planets: data.results });
+						let arrLike = data.results.map(item => {
+							return { ...item, like: false, type: "planets" };
+						});
+						setStore({ planets: data.results, arrLike: arrLike });
 					});
 			},
 			setSpecies: () => {
+				const store = getStore();
 				fetch("https://www.swapi.tech/api/species")
 					.then(resp => resp.json())
 					.then(data => {
-						setStore({ species: data.results });
+						let arrLike = data.results.map(item => {
+							return { ...item, like: false, type: "species" };
+						});
+						setStore({ species: data.results, arrLike: arrLike });
 					});
 			}
 		}

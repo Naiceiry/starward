@@ -7,16 +7,8 @@ export const Listspecies = () => {
 	useEffect(() => {
 		actions.setSpecies();
 	}, []);
-	const listSpecies = store.species.map((items, indexs) => {
-		return (
-			<Species
-				key={indexs}
-				name={items.name}
-				url={items.url}
-				properties={items.properties}
-				description={items.description}
-			/>
-		);
+	const listSpecies = store.species.map((item, index) => {
+		return <Species key={index} name={item.name} url={item.url} uid={item.uid} kind={"species"} />;
 	});
 	return (
 		<div className="text-center mt-5">
