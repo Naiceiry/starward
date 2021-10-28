@@ -4,7 +4,7 @@ import logo from "../../img/starward.jpg";
 import "/workspace/starward/src/front/styles/home.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Context } from "../store/appContext";
-
+import { BsXCircle } from "react-icons/bs";
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
 
@@ -15,7 +15,9 @@ export const Navbar = () => {
 
 		return (
 			<li key={item.url} id="myLiList">
-				<Link to={`/${category}/${element}`}>{item.name}</Link>
+				<a>
+					{item.name} <BsXCircle />
+				</a>
 			</li>
 		);
 	});
@@ -38,13 +40,9 @@ export const Navbar = () => {
 						aria-expanded="false">
 						favourite
 					</button>
-					<div className="dropdown-menu  pr-12" aria-labelledby="dropdownMenuButton">
-						<ul className="float-md-right  pr-12">
-							{store.favourites.length > 0 ? (
-								listFavourites
-							) : (
-								<p className=" pl-10 pr-11">You do not have any favourite</p>
-							)}
+					<div className=" dropdown-menu " aria-labelledby="dropdownMenuButton">
+						<ul className="float-md-center ">
+							{store.favourites.length > 0 ? listFavourites : <p>You do not have any favourite</p>}
 						</ul>
 					</div>
 				</div>

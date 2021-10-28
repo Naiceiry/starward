@@ -76,7 +76,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ properties: details });
 					});
 			},
-			deleteFavourite: (itemUrl, favouritesArr) => {
+			delemmitourite: (itemUrl, favouritesArr) => {
 				favouritesArr.map((item, index) => {
 					if (item.url === itemUrl) {
 						item.favorite = false;
