@@ -33,7 +33,7 @@ export const People = props => {
 					{isIncluded && <HeartFill />}
 					{!isIncluded && (
 						<Heart
-							onClick={e => {
+							onClick={() => {
 								actions.addFavourite({
 									name: props.name,
 									uid: props.uid,

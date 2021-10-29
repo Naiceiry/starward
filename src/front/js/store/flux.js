@@ -58,7 +58,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						let arrLike = data.results.map(item => {
 							return { ...item, like: false, type: "people" };
 						});
-						setStore({ characters: data.results, arrLike: arrLike });
+						setStore({ characters: arrLike });
 					});
 			},
 			addFavourite: dataNewElement => {
@@ -76,12 +76,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ properties: details });
 					});
 			},
-			delemmitourite: (itemUrl, favouritesArr) => {
-				favouritesArr.map((item, index) => {
-					if (item.url === itemUrl) {
-						item.favorite = false;
-						favouritesArr.splice(index, 1);
-						setStore({ favourites: [...favouritesArr] });
+			deletfavourite: (a, b) => {
+				const store = getStore();
+				store.favourites.map((item, index) => {
+					if (item.url === a) {
+						store.favourites.splice(index, 1);
+						setStore({ favourites: [...store.favourites] });
 					}
 				});
 			},
@@ -94,7 +94,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						let arrLike = data.results.map(item => {
 							return { ...item, like: false, type: "planets" };
 						});
-						setStore({ planets: data.results, arrLike: arrLike });
+						setStore({ planets: arrLike });
 					});
 			},
 			setSpecies: () => {
@@ -105,7 +105,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						let arrLike = data.results.map(item => {
 							return { ...item, like: false, type: "species" };
 						});
-						setStore({ species: data.results, arrLike: arrLike });
+						setStore({ species: arrLike });
 					});
 			}
 		}
