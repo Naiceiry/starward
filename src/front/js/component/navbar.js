@@ -38,10 +38,10 @@ export const Navbar = props => {
 						<img id="logo" src={logo} />
 					</Link>
 				</div>
-				<div className="col-6 float-right">
-					<div className="container float-right">
+				<div className="col-6  dropdown-menu-right">
+					<div className="mover">
 						<button
-							className="btn btn-outline-warning dropdown-toggle pl-5 pr-5 float-right"
+							className="btn btn-outline-warning dropdown-toggle"
 							type="button"
 							id="dropdownMenuButton"
 							data-toggle="dropdown"
@@ -49,7 +49,7 @@ export const Navbar = props => {
 							aria-expanded="false">
 							favourite
 						</button>
-						<div className=" dropdown-menu " aria-labelledby="dropdownMenuButton">
+						<div className="dropdown-menu dropdown-menu-right " aria-labelledby="dropdownMenuButton">
 							<ul>
 								{store.favourites.length > 0 ? listFavourites : <p>You do not have any favourite</p>}
 							</ul>
